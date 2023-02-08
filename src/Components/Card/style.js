@@ -11,10 +11,23 @@ export const ContainerCard = styled.div`
 `
 
 export const Titles = styled.h2`
-  font-family: 'Righteous', cursive;
-  font-size: 20px;
-  color: white;
+  font-family: 'Annie Use Your Telescope', cursive;
+  font-size: 24px;
+  color: #800080;
 `
+
+export const Paragrafo = styled.p`
+  font-family: 'Corben', cursive;
+  font-size: 18px;
+  color: #9932CC;
+`
+
+export const AddCart = styled.span`
+  font-family: 'Dosis', sans-serif;
+  font-size: 16px;
+  color: navy;
+`
+
 export const Imgs = styled.img`
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;

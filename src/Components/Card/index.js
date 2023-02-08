@@ -1,4 +1,4 @@
-import {Titles, Imgs, Button, ButtonIcon, ContainerCard} from "./style"
+import {Titles, Imgs, Button, ButtonIcon, ContainerCard, Paragrafo, AddCart} from "./style"
 import IconAddCart from "../../icons/add_cart.svg"
 
 export function Card({book, addToCart}) {
@@ -7,9 +7,9 @@ export function Card({book, addToCart}) {
     <ContainerCard>
       <Imgs src={book.imagem} />
       <Titles>{book.titulo}</Titles>
-      <p>{book.valor.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</p>
+      <Paragrafo>{book.valor.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</Paragrafo>
       <Button onClick={() => addToCart(book, true)}>
-        <span>Adicionar ao Carrinho</span>  
+        <AddCart>Adicionar ao Carrinho</AddCart>  
         <ButtonIcon src={IconAddCart} />
       </Button>
     </ContainerCard>
