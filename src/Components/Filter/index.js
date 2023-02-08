@@ -1,5 +1,6 @@
-import { FilterContainer } from "./style"
+import { FilterContainer, FilterTitle, OrderContainer, FilterButton, ArrowImg, MaiorMenorValor } from "./style"
 import { useState } from "react";
+import ArrowLeft from "../../icons/double_arrow_left.svg"
 
 export function Filter({
   showFilter,
@@ -53,37 +54,38 @@ export function Filter({
   return showFilter ? (
     <FilterContainer>
       <div>
-        <p>Filtros</p>
-        <span onClick={toggleFilter}> {"<<"} </span>
+        <FilterTitle>Filtros</FilterTitle>
       </div>
-      <p>Ordenar por:</p>
-      <div>
-        <div>
-          <input
-            type="radio"
-            id="maior"
-            name="maior"
-            value={sortBy}
-            checked={sortBy === "maior"}
-            onChange={handleSortChange}
-          />
-          <label htmlFor="maior">Maior Valor</label>
-        </div>
+      <OrderContainer>
+        <p>Ordenar por:</p>
+        <MaiorMenorValor>
+          <div>
+            <input
+              type="radio"
+              id="maior"
+              name="maior"
+              value={sortBy}
+              checked={sortBy === "maior"}
+              onChange={handleSortChange}
+            />
+            <label htmlFor="maior">Maior Valor</label>
+          </div>
 
-        <div>
-          <input
-            type="radio"
-            id="menor"
-            name="menor"
-            value={sortBy}
-            checked={sortBy === "menor"}
-            onChange={handleSortChange}
-          />
-          <label htmlFor="menor">Menor Valor</label>
-        </div>
-      </div>
+          <div>
+            <input
+              type="radio"
+              id="menor"
+              name="menor"
+              value={sortBy}
+              checked={sortBy === "menor"}
+              onChange={handleSortChange}
+            />
+            <label htmlFor="menor">Menor Valor</label>
+          </div>
+        </MaiorMenorValor>
+      </OrderContainer>
 
-      <div>
+      <OrderContainer>
         <span>Valor Mínimo</span>
         <input
           name="minValue"
@@ -92,8 +94,8 @@ export function Filter({
           value={minValue}
           onChange={handleFilterChange}
         />
-      </div>
-      <div>
+      </OrderContainer>
+      <OrderContainer>
         <span>Valor Máximo</span>
         <input
           name="maxValue"
@@ -102,8 +104,8 @@ export function Filter({
           value={maxValue}
           onChange={handleFilterChange}
         />
-      </div>
-      <div>
+      </OrderContainer>
+      <OrderContainer>
         <span>Título</span>
         <input
           name="title"
@@ -111,8 +113,9 @@ export function Filter({
           value={title}
           onChange={handleFilterChange}
         />
-      </div>
-      <button onClick={handleClearFilters}>Limpar Filtros</button>
+      </OrderContainer>
+      <FilterButton onClick={handleClearFilters}>Limpar Filtros</FilterButton>
+      <ArrowImg src={ArrowLeft} onClick={toggleFilter}/>
 
     </FilterContainer>
   ) : null

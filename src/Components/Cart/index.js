@@ -1,4 +1,5 @@
-import {CartContainer} from "./style"
+import {CartContainer, CartTitle, ArrowImg, ItemsCart} from "./style"
+import ArrowRight from "../../icons/double_arrow_right.svg"
 
 export function Cart({
   showCart,
@@ -23,9 +24,8 @@ export function Cart({
 
   return showCart ? (
     <CartContainer>
-      <p>{"Cart"}</p>
-      <span onClick={toggleCart}> {">>"}</span>
-      <div>
+      <CartTitle>{"Carrinho"}</CartTitle>
+      <ItemsCart>
         {cart.map(book => (
           <div key={book.id}>
             <span>{book.titulo} {book.valor}</span>
@@ -48,11 +48,12 @@ export function Cart({
             </span>
           </div>
         ))}
-      </div>
+      </ItemsCart>
 
       <div>
        <span>Total: {getTotal().toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span> 
       </div>
+      <ArrowImg src={ArrowRight} onClick={toggleCart}/>
     </CartContainer>
   ): null
 }
