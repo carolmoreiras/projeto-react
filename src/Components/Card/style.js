@@ -26,6 +26,7 @@ export const AddCart = styled.span`
   font-family: 'Dosis', sans-serif;
   font-size: 16px;
   color: navy;
+  font-weight: 700;
 `
 
 export const Imgs = styled.img`

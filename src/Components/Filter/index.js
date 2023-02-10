@@ -1,6 +1,14 @@
-import { FilterContainer, FilterTitle, OrderContainer, FilterButton, ArrowImg, MaiorMenorValor } from "./style"
+import {
+  FilterContainer,
+  FilterTitle,
+  OrderContainer,
+  FilterButton,
+  ArrowImg,
+  MaiorMenorValor,
+  FiltertHeader
+} from "./style"
 import { useState } from "react";
-import ArrowLeft from "../../icons/double_arrow_left.svg"
+import ArrowRight from "../../icons/double_arrow_right.svg"
 
 export function Filter({
   showFilter,
@@ -53,9 +61,10 @@ export function Filter({
 
   return showFilter ? (
     <FilterContainer>
-      <div>
+      <FiltertHeader>
         <FilterTitle>Filtros</FilterTitle>
-      </div>
+        <ArrowImg src={ArrowRight} onClick={toggleFilter} />
+      </FiltertHeader>
       <OrderContainer>
         <p>Ordenar por:</p>
         <MaiorMenorValor>
@@ -115,8 +124,6 @@ export function Filter({
         />
       </OrderContainer>
       <FilterButton onClick={handleClearFilters}>Limpar Filtros</FilterButton>
-      <ArrowImg src={ArrowLeft} onClick={toggleFilter}/>
-
     </FilterContainer>
   ) : null
 }
