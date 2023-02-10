@@ -1,12 +1,19 @@
 import styled from 'styled-components';
 
 export const FilterContainer = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-background-color: #F8F8FF;
-width: 600px;
-
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FfffFF;
+  width: 400px;
+  color: navy;
+  font-size: 20px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
 `
 
 export const FilterTitle = styled.h2`
@@ -17,7 +24,6 @@ export const FilterTitle = styled.h2`
   align-items:center;
   font-size: 24px;
   color: #800080;
-  /* border-radius: 20px; */
   margin: 8px 0;
   width: 200px;
 `
@@ -27,10 +33,22 @@ export const OrderContainer = styled.div`
   align-items:center;
   flex-direction: column;
   padding: 10px;
+  /* border-radius:10px;
+  width: 360px; */
+
+  input{
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  }
 
   p{
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     font-size: 20px;
+    text-decoration: underline;
+  }
+
+  span{
+    color: purple;
   }
 `
 export const MaiorMenorValor = styled.div`
@@ -41,6 +59,7 @@ export const MaiorMenorValor = styled.div`
   input {
   height: 10px;
   width: 10px;
+  
   }
 
 label{
@@ -49,14 +68,34 @@ label{
 `
 
 export const FilterButton = styled.button`
-  background-color: #D3D3D3;
-  margin: 8px;
+  margin-top: 20px;
   width: 120px;
   padding: 4px;
-  border-radius: 20px;
-  border: none;
+  border: none; 
+  background-color: #D3D3D3;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 `
 
 export const ArrowImg = styled.img`
-  width: 24px;
+  position: absolute;
+  width: 32px;
+  top: 0;
+  left: 12px;
+  cursor: pointer;
+`
+
+export const FiltertHeader = styled.div`
+  position: relative;
+  display: flex;
+  background-color: #ffb6f3; 
+  justify-content: center;
+  align-items:center;
+  margin: 8px 0;
+  width: 95%;
 `

@@ -1,5 +1,20 @@
-import {CartContainer, CartTitle, ArrowImg, ItemsCart} from "./style"
+import {
+  CartContainer,
+  CartHeader,
+  Title,
+  ArrowImg,
+  ItemsCart,
+  VazioImagem,
+  ValorTotal,
+  FinalButtonBack,
+  Checkout,
+  ContainerButtons,
+} from "./style"
 import ArrowRight from "../../icons/double_arrow_right.svg"
+import { CartCard } from "./CartCard"
+import VazioImg from "../../images/vazio.png";
+import Check from "../../icons/check.svg"
+import { CheckoutFeedback } from "./CheckoutFeedback"
 
 export function Cart({
   showCart,
@@ -8,6 +23,9 @@ export function Cart({
   addToCart,
   removeFromCart,
   deleteFromCart,
+  checkoutCart,
+  showFeedback,
+  toggleFeedback
 }) {
 
   const getTotal = () => {
@@ -15,7 +33,7 @@ export function Cart({
 
     for (let i = 0; i < cart.length; i++) {
       const product = cart[i];
-      total+= product.valor * product.quantidade
+      total += product.valor * product.quantidade
     }
 
     return total
@@ -24,36 +42,35 @@ export function Cart({
 
   return showCart ? (
     <CartContainer>
-      <CartTitle>{"Carrinho"}</CartTitle>
+      <CartHeader>
+        <Title>Carrinho</Title>
+        <ArrowImg src={ArrowRight} onClick={toggleCart} />
+      </CartHeader>
       <ItemsCart>
-        {cart.map(book => (
-          <div key={book.id}>
-            <span>{book.titulo} {book.valor}</span>
-            <div>
-              <button
-                disabled={book.quantidade === 1}
-                onClick={() => removeFromCart(book)}
-              >
-                -
-              </button>
-
-              <span>{book.quantidade}</span>
-              <button onClick={() => addToCart(book)}>+</button>
-              <button onClick={() => deleteFromCart(book)}>x</button>
-            </div>
-            <span>
-              {(book.valor * book.quantidade).toLocaleString(
-                'pt-BR', {style: 'currency', currency: 'BRL'}
-              )}
-            </span>
+        {cart.length ? cart.map(book => (
+          <CartCard
+            key={book.id}
+            book={book}
+            addToCart={addToCart}
+            removeFromCart={removeFromCart}
+            deleteFromCart={deleteFromCart}
+          />
+        )) : showFeedback ? (
+          <CheckoutFeedback toggleFeedback={toggleFeedback}/>
+        ) : (
+          <div>
+            <VazioImagem src={VazioImg} />
           </div>
-        ))}
+        )}
       </ItemsCart>
+      <ValorTotal><p>Valor Total: </p>{getTotal().toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</ValorTotal>
+      <ContainerButtons>
+        <FinalButtonBack type="submit" onClick={toggleCart}>Continuar Comprando</FinalButtonBack>
 
-      <div>
-       <span>Total: {getTotal().toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span> 
-      </div>
-      <ArrowImg src={ArrowRight} onClick={toggleCart}/>
+        <Checkout type="submit" disabled={!cart.length} onClick={checkoutCart}>
+          <img src={Check} />Finalizar Compra
+        </Checkout>
+      </ContainerButtons>
     </CartContainer>
-  ): null
+  ) : null
 }

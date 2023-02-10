@@ -28,8 +28,11 @@ function App() {
   const [showCart, setShowCart] = useState(false)
   const [cart, setCart] = useState(getLocalStorageCart())
   const [filteredBooks, setFilteredBooks] = useState(books)
+  const [showFeedback, setShowFeedBack] = useState(false)
 
   const toggleFilter = () => setShowFilter(prevState => !prevState)
+
+  const toggleFeedback = () => setShowFeedBack(prevState => !prevState)
 
   const toggleCart = () => {
     setShowCart(prevState => !prevState)
@@ -118,6 +121,12 @@ function App() {
     setFilteredBooks(newFilteredBooks)
   }
 
+  const checkoutCart = () => {
+    setCart([])
+    toggleFeedback()
+
+  }
+
   return (
     <div>
       <Header toggleFilter={toggleFilter} filterBooks={filterBooks} toggleCart={toggleCart} />
@@ -139,6 +148,9 @@ function App() {
           addToCart={addToCart}
           removeFromCart={removeFromCart}
           deleteFromCart={deleteFromCart}
+          checkoutCart={checkoutCart}
+          showFeedback={showFeedback}
+          toggleFeedback={toggleFeedback}
         />
       </Main>
 
